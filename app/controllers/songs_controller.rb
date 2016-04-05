@@ -23,7 +23,7 @@ class SongsController < ApplicationController
   end
 
   def upload
-    #
+    #keeps saying code looks the same as lesson's
     SongsWorker.perform_async(params[:file].path)
     redirect_to songs_path
   end
