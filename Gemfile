@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 gem 'sidekiq'
 gem 'rails', '4.2.5'
 gem 'sqlite3'
