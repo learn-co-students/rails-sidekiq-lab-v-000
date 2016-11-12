@@ -1,6 +1,11 @@
 class SongsController < ApplicationController
   require 'csv'
 
+  def upload
+    SongsWorker.perform_async(params[:file].path)
+    redirect_to songs_path
+  end
+
   def index
     @songs = Song.all
   end
@@ -59,4 +64,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title, :artist_name)
   end
 end
-
