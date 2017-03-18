@@ -12,9 +12,9 @@ group :development, :test do
   gem 'pry'
   gem 'capybara'
   gem 'rspec-rails'
+  gem 'rb-readline', '~> 0.5.3'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
 end
-
