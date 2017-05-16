@@ -2178,3 +2178,80 @@ Migrating to AddArtistToSong (20160126235547)
             FROM sqlite_temp_master
             WHERE name='index_songs_on_artist_id' AND type='index'
 [0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_songs_on_artist_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_songs_on_artist_id' AND type='index'
+[0m
+
+
+Started GET "/" for ::1 at 2017-05-16 11:53:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/templates/rails/welcome/index.html.erb (1.2ms)
+Completed 200 OK in 9ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/songs" for ::1 at 2017-05-16 11:53:26 -0400
+Processing by SongsController#index as HTML
+  [1m[35mSong Load (0.2ms)[0m  SELECT "songs".* FROM "songs"
+  Rendered songs/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 179ms (Views: 175.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/songs/upload" for ::1 at 2017-05-16 11:53:50 -0400
+Processing by SongsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gPvpEIaDXRR2XtxqHaLmJAmAB3Jw+L83VPvzRDM9BTwpbL79M7pZFFHW8f8k9Bg2EtAodwtXl2fii/Fsnl6sig==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f9afea0a398 @tempfile=#<Tempfile:/var/folders/06/n4_b3fvn1fdfwngsl0725vgm0000gn/T/RackMultipart20170516-68230-1rbb042.csv>, @original_filename="songs.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"songs.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"Save changes"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+Redis::CannotConnectError (Error connecting to Redis on 127.0.0.1:6379 (Errno::ECONNREFUSED)):
+  app/controllers/songs_controller.rb:27:in `upload'
+
+
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.8ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (396.7ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/mdo5004/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (483.3ms)
+
+
+Started POST "/songs/upload" for ::1 at 2017-05-16 11:55:41 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SongsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gPvpEIaDXRR2XtxqHaLmJAmAB3Jw+L83VPvzRDM9BTwpbL79M7pZFFHW8f8k9Bg2EtAodwtXl2fii/Fsnl6sig==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fe0df952910 @tempfile=#<Tempfile:/var/folders/06/n4_b3fvn1fdfwngsl0725vgm0000gn/T/RackMultipart20170516-69123-9vfcey.csv>, @original_filename="songs.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"songs.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"Save changes"}
+Redirected to http://localhost:3000/songs
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/songs" for ::1 at 2017-05-16 11:55:41 -0400
+Processing by SongsController#index as HTML
+  [1m[35mSong Load (0.3ms)[0m  SELECT "songs".* FROM "songs"
+  Rendered songs/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 195ms (Views: 192.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/songs" for ::1 at 2017-05-16 11:56:37 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SongsController#index as HTML
+  [1m[35mSong Load (0.1ms)[0m  SELECT "songs".* FROM "songs"
+  Rendered songs/index.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 158ms (Views: 154.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/songs" for ::1 at 2017-05-16 11:56:40 -0400
+Processing by SongsController#index as HTML
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT "songs".* FROM "songs"[0m
+  Rendered songs/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.1ms)
