@@ -1,7 +1,6 @@
 class SongsController < ApplicationController
   require 'csv'
-  include Sidekiq::Worker
-
+  # require '../../workers/songs_workers.rb'
   def index
     @songs = Song.all
   end
