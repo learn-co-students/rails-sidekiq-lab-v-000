@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+gem 'learn-co'
+gem 'learn-test'
 gem 'sidekiq'
 gem 'rails', '4.2.5'
 gem 'sqlite3'
