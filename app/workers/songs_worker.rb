@@ -1,0 +1,11 @@
+class SongsWorker
+  include Sidekiq::Worker
+
+  def perform(songs_file)
+    CSV.foreach(params["file"].path, headers: true) do |song|
+      # /Song Clean,ARTIST CLEAN,Release Year,COMBINED,First?,Year?,PlayCount,F*G
+      song = Song.create(title: song[0], artist_name: song[1])
+    end
+    redirect_to songs_path
+  end
+end
