@@ -2178,3 +2178,110 @@ Migrating to AddArtistToSong (20160126235547)
             FROM sqlite_temp_master
             WHERE name='index_songs_on_artist_id' AND type='index'
 [0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_songs_on_artist_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_songs_on_artist_id' AND type='index'
+[0m
+
+
+Started GET "/" for ::1 at 2018-03-06 14:56:21 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/railties-4.2.5/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 17ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/songs" for ::1 at 2018-03-06 14:56:28 -0500
+Processing by SongsController#index as HTML
+  [1m[35mSong Load (0.6ms)[0m  SELECT "songs".* FROM "songs"
+  Rendered songs/index.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 206ms (Views: 198.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/songs/upload" for ::1 at 2018-03-06 14:56:54 -0500
+Processing by SongsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r4I8QTYcdupJrB9l3g/3QMhU5lfQn9yC1bX9LGY2Da1DNmd/7RspuKMlIx2vPfoVqFrlBjDMDlasswPbeoYnPw==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fc5c26148d0 @tempfile=#<Tempfile:/var/folders/87/zg017ry5727fhb1n276q1v0m0000gn/T/RackMultipart20180306-73914-1o4bx2c.csv>, @original_filename="songs.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"songs.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"Save changes"}
+Redirected to http://localhost:3000/songs
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/songs" for ::1 at 2018-03-06 14:56:54 -0500
+Processing by SongsController#index as HTML
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT "songs".* FROM "songs"[0m
+  Rendered songs/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 29ms (Views: 28.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/songs/index" for ::1 at 2018-03-06 14:57:06 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[35mSong Load (0.3ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 20ms (ActiveRecord: 0.6ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Song with 'id'=index):
+  app/controllers/songs_controller.rb:9:in `show'
+
+
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.8ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (402.8ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (507.7ms)
+
+
+Started GET "/songs/show" for ::1 at 2018-03-06 14:57:29 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Song with 'id'=show):
+  app/controllers/songs_controller.rb:9:in `show'
+
+
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (80.6ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (68.3ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/shannonmccormack/.rvm/gems/ruby-2.3.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (155.1ms)
+
+
+Started GET "/songs" for ::1 at 2018-03-06 14:57:38 -0500
+Processing by SongsController#index as HTML
+  [1m[35mSong Load (0.2ms)[0m  SELECT "songs".* FROM "songs"
+  Rendered songs/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 15ms (Views: 14.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/songs" for ::1 at 2018-03-06 14:58:03 -0500
+Processing by SongsController#index as HTML
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT "songs".* FROM "songs"[0m
+  Rendered songs/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/songs/new" for ::1 at 2018-03-06 14:59:44 -0500
+Processing by SongsController#new as HTML
+  Rendered songs/_form.html.erb (26.8ms)
+  Rendered songs/new.html.erb within layouts/application (30.1ms)
+Completed 200 OK in 51ms (Views: 42.1ms | ActiveRecord: 0.0ms)
