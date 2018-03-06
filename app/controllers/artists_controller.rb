@@ -42,6 +42,11 @@ class ArtistsController < ApplicationController
     redirect_to artists_path
   end
 
+  def upload
+    LeadsWorker.perform_async(params[:songs].path)
+    redirect_to songs_path
+  end
+
   private
 
   def artist_params
