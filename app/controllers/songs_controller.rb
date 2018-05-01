@@ -24,9 +24,14 @@ class SongsController < ApplicationController
   end
 
   def upload
-    CSV.foreach(params["file"].path, headers: true) do |song|
-      Song.create(title: song[0], artist_name: song[1])
-    end
+   # Below is what gets passed into my params hash.
+   #    => #<Rack::Test::UploadedFile:0x007fa23d1bfa80
+   # @content_type="text/csv",
+   # @original_filename="songs.csv",
+   # @tempfile=
+   #  #<File:/var/folders/85/8z627c5x4zg_51bgnn6123z80000gn/T/songs.csv20180501-90162-1mpyz64>>
+
+    SongsWorker.perform_async(params[:file].path)
     redirect_to songs_path
   end
 
@@ -59,4 +64,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title, :artist_name)
   end
 end
-
