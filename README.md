@@ -1,5 +1,7 @@
 # Sidekiq Lab
 I'm on windows. Redis doesn't work.
+
+
 ## Objectives
 
 1. Move a long-running task to Sidekiq
