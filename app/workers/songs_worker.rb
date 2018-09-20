@@ -1,4 +1,4 @@
-class LeadsWorker
+class SongsWorker
   include Sidekiq::Worker
   require 'csv'
 
