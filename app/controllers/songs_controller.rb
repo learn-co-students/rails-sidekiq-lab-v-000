@@ -1,5 +1,4 @@
 class SongsController < ApplicationController
-  require 'csv'
 
   def index
     @songs = Song.all
@@ -23,11 +22,9 @@ class SongsController < ApplicationController
     end
   end
 
-  def upload
-    CSV.foreach(params["file"].path, headers: true) do |song|
-      Song.create(title: song[0], artist_name: song[1])
-    end
-    redirect_to songs_path
+  def upload # The #upload action (method) of SongsController will run SongsWorker to upload and process the db/songs.csv CSV file instead of processing this file inline here
+    SongsWorker.perform_async(params[:file].path) # the argument is the path to the CSV file
+    redirect_to songs_path # The user is immediately redirected to songs index page b/c the request/response is on the main web application thread, whereas the blocking task (uploading and processing the CSV file) is on a background thread
   end
 
   def edit
@@ -59,4 +56,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title, :artist_name)
   end
 end
-
