@@ -13,6 +13,12 @@ class SongsController < ApplicationController
     @song = Song.new
   end
 
+  def upload
+     SongsWorker.perform_async(params[:file].path)
+     redirect_to songs_path
+  end
+
+
   def create
     @song = Song.new(song_params)
 
@@ -59,4 +65,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title, :artist_name)
   end
 end
-
