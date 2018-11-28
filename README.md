@@ -1,7 +1,6 @@
 # Sidekiq Lab
 
 ## Objectives
-
 1. Move a long-running task to Sidekiq
 
 ## Overview
