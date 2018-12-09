@@ -8,6 +8,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker'
 gem 'sidekiq'
+gem 'pry'
 
 group :development, :test do
   gem 'pry'

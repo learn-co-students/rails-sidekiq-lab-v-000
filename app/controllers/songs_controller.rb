@@ -1,12 +1,17 @@
+require 'pry'
+
 class SongsController < ApplicationController
 
 
   def index
+    
     @songs = Song.all
   end
 
   def upload
-    SongsWorker.perform_async(params[:file].path)
+    binding.pry
+    SongsWorker.perform_async(song_import_params.path)
+    #SongsWorker.perform_async(params[:file].path)
     redirect_to songs_path
   end
 
