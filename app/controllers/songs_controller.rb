@@ -52,6 +52,10 @@ class SongsController < ApplicationController
     flash[:notice] = "Song deleted."
     redirect_to songs_path
   end
+  
+  def upload
+    SongsWorker.perform_async(params["file"].path)
+  end
 
   private
 
