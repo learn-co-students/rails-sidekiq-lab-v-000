@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 gem 'sidekiq'
-gem 'rails', '4.2.5'
+gem 'rails', '5.2.2'
 gem 'sqlite3', '~>1.3.6'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'jbuilder', '~> 2.0'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'jbuilder'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker'
 
@@ -17,4 +17,3 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
 end
-
