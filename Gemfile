@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
+
+gem 'bundler', '~> 1.6', '>=1.16.1'
+
 gem 'sidekiq'
-gem 'rails', '4.2.5'
+gem 'rails'
 gem 'sqlite3', '~>1.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -17,4 +20,3 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
 end
-
