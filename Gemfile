@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'bundler', '~> 1.6', '>=1.16.1'
 gem 'sidekiq'
 gem 'rails', '4.2.5'
 gem 'sqlite3', '~>1.3.6'
