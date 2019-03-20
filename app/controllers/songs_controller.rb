@@ -1,5 +1,11 @@
 class SongsController < ApplicationController
   require 'csv'
+	require 'songs_worker'
+	
+	def upload
+    SongsWorker.perform_async(params["file"].path)
+    redirect_to songs_path
+  end
 
   def index
     @songs = Song.all
@@ -23,12 +29,14 @@ class SongsController < ApplicationController
     end
   end
 
+=begin
   def upload
     CSV.foreach(params["file"].path, headers: true) do |song|
       Song.create(title: song[0], artist_name: song[1])
     end
     redirect_to songs_path
   end
+=end
 
   def edit
     @song = Song.find(params[:id])
