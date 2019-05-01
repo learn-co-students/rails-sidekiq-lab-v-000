@@ -8,6 +8,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker'
 gem 'bootsnap'
+gem 'redis'
 group :development, :test do
   gem 'pry'
   gem 'capybara'
