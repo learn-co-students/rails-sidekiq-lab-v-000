@@ -5,6 +5,8 @@ class SongsController < ApplicationController
     @songs = Song.all
   end
 
+
+
   def show
     @song = Song.find(params[:id])
   end
@@ -24,9 +26,8 @@ class SongsController < ApplicationController
   end
 
   def upload
-    CSV.foreach(params["file"].path, headers: true) do |song|
-      Song.create(title: song[0], artist_name: song[1])
-    end
+
+    SongsWorker.perform_async('db/songs')
     redirect_to songs_path
   end
 
@@ -59,4 +60,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title, :artist_name)
   end
 end
-
