@@ -8,4 +8,3 @@ class SongsWorker
         end
     end
 end
-      
