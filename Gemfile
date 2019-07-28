@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'rb-readline', '~> 0.5.3'
 gem 'sidekiq'
 gem 'rails', '5.0.7.1'
 gem 'sqlite3', '~>1.3.6'
