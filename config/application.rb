@@ -11,5 +11,8 @@ module DisplayingAssociationsRailsLab
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    # https://github.com/mperham/sidekiq/issues/1043
+    # config.autoload_paths += %W(#{config.root}/app/workers)
   end
 end
